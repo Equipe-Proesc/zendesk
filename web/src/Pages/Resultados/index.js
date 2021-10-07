@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import './style.css';
 import AgentCard from '../../Components/AgentCardResults'
@@ -6,6 +6,7 @@ import AgentsSkeleton from '../../Components/AgentsSkeleton'
 import Navbar from '../../Components/Navbar';
 import { FaSearch } from 'react-icons/fa';
 import IndicatorCard from '../../Components/IndicatorCard';
+import { format } from 'date-fns'
 
 export default function Results() {
     const [loading, setLoading] = useState(false);
@@ -13,10 +14,26 @@ export default function Results() {
     const [solvedTickets, setSolvedTickets] = useState('');
     const [pendingTickets, setPendingTickets] = useState('');
     const [openTickets, setOpenTickets] = useState('');
-
-    const [inicialDate, setInicialDate] = useState('');
-    const [finalDate, setFinalDate] = useState('');
+    const currentDate = format(new Date(), 'yyyy-MM-dd');
+    const [inicialDate, setInicialDate] = useState(currentDate);
+    const [finalDate, setFinalDate] = useState(currentDate);
     const [agentInfos, setAgentInfos] = useState([]);
+    useEffect(() => {
+        searchResultsTickets();
+
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("header-agents");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+        }
+    }, [])
     const [agentes] = useState(
             [
                 {
@@ -78,7 +95,9 @@ export default function Results() {
             ]
         );
         async function searchResultsTickets(e){
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
             if (!loading) {
                 try{
                     setLoading(true);
@@ -92,6 +111,7 @@ export default function Results() {
                             chat: agente.chat
                         }
                         const response = await api.get(`/tickets/?filter=tags:${agente.name} status:solved status:closed solved>=${inicialDate} solved<=${finalDate}`);
+
                         infoAgent = {
                             ...infoAgent,
                             total:response.data?response.data:0
@@ -174,12 +194,22 @@ export default function Results() {
 
             {loading && <AgentsSkeleton />}
             <div className="agents-container-results">
+            <div className="header" id="header-agents">
+                <p>Agente</p>
+                <p className="question">Dúvidas</p>
+                <p className="task">Tarefas</p>
+                <p className="problem">Problemas</p>
+                <p>Total</p>
+                <p>Chat</p>
+                <p>Satisfação</p>
+            </div>
             {!loading && (
                 agentInfos.map((agente)=>{
                     return(
                             <AgentCard 
                                 agent_picture={agente.image}
                                 agent={agente.name} 
+                                key={agente.name}
                                 chat={agente.chat}
                                 total={agente.total} question={agente.question} task={agente.task} problem={agente.problem}
                                 count_chats={agente.chats} satisfaction={agente.chats > 0 ? (100-((agente.chatRating) * 100/ agente.chats)).toFixed(2) : 0 } 

@@ -1,22 +1,14 @@
 .agent-card-results{
-    width: 15rem;
-    height: 50%;
     background: #2C2929;
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
+    justify-content: space-around;
+    padding: 1em;
     transition: 200ms;
-    margin-bottom: 2em;
-    margin-left: 5em;
-}
-
-.dados{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
+    margin-bottom: 1em;
+    text-align: center;
 }
 
 .agent-card-results:hover{
@@ -25,13 +17,12 @@
 }
 
 .agent-card-results h1 {
-    font-size: 1.5rem;
-    line-height: 1.5em;
+    font-size: 1rem;
+    font-weight: normal;
 }
 
 .agent-card-results p{
-    font-size: 1rem;
-    line-height: 1.5em;
+    font-size: 1.75rem;
 }
 
 .agent-card-results .question{
