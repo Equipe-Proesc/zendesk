@@ -37,5 +37,6 @@
 
 .agent-card img{
     width: 4em;
+    height: 4em;
     border-radius: 50%;
 }
