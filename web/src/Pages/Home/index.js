@@ -26,6 +26,9 @@ export default function Home() {
     const [aureane, setAureane] = useState('');
     const [aureanePending, setAureanePending] = useState('');
 
+    const [gio, setGio] = useState('');
+    const [gioPending, setGioPending] = useState('');
+
     useEffect(() => {
         async function searchLumaTickets(){
             const response = await api.get(`/tickets/?filter=tags:luma solved:${data}`);
@@ -49,9 +52,6 @@ export default function Home() {
 
             const response2 = await api.get(`/tickets/?filter=tags:aureane status:pending`);
             setAureanePending(response2.data);
-
-            setLoading(false);
-
         }
 
         async function searchAlexandreTickets(){
@@ -72,11 +72,24 @@ export default function Home() {
 
         }
 
+        async function searchGioTickets(){
+            const response = await api.get(`/tickets/?filter=tags:giovanna solved:${data}`);
+            setGio(response.data);
+
+            const response2 = await api.get(`/tickets/?filter=tags:giovanna status:pending`);
+            setGioPending(response2.data);
+
+            setLoading(false);
+
+
+        }
+
         searchLumaTickets();
         searchAureaneTickets();
         searchAlexandreTickets();
         searchDrianneTickets();
         searchUberTickets();
+        searchGioTickets();
 
     },[data])
 
@@ -108,15 +121,21 @@ export default function Home() {
                     
                     <AgentCard 
                         agent_picture="https://trello-attachments.s3.amazonaws.com/6036b82d00e3de2b27796ff7/960x1280/3d94b336907be4f26cf5e2dd1ef60791/foto_atualizada.jpeg.jpg" 
-                        agent="Drianne" solved={drianne} pending={driannePending} /> 
+                        agent="Drianne" solved={drianne} pending={driannePending} 
+                    /> 
+
+                    <AgentCard 
+                        agent_picture="https://trello-attachments.s3.amazonaws.com/60353fe15584ee18e0dd08d1/1153x2048/526869e1b4204291de6fe2d3fa9e6c54/EqgilqwXAAMboqL_-_Giovanna_Lourinho.png" 
+                        agent="Giovanna" solved={gio} pending={gioPending} 
+                    /> 
 
                 </div>
             )}
 
             <div className="total">
                     <h3>Total N2</h3>
-                    <p>{luma+uber+aureane+alexandre+drianne} resolvidos </p>
-                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+driannePending} pendentes</p> 
+                    <p>{luma+uber+aureane+alexandre+drianne+gio} resolvidos </p>
+                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+driannePending+gioPending} pendentes</p> 
             </div>
 
         </div>
