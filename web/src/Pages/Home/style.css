@@ -1,29 +1,39 @@
 .tickets-container{
-    width: 100vw;
-    background-color: black;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+}
+
+.tickets-container .header-container{
+    width: 100%;
 }
 
 .tickets-container .tickets-header {
     background-color: #2C2929;
     width: inherit;
-    height: 15vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0.2rem;
+}
+.tickets-container .tickets-header  h1{
+    font-size: 1.6rem;
 }
 
 .tickets-container .tickets-header  h2{
     font-weight: normal;
+    font-size: 1.2rem;
 }
 
 .tickets-container .agents-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap:1rem 6rem;
     margin-top: 2rem;
     justify-content: space-around;
@@ -53,12 +63,6 @@
 
 .button:hover{
     background: var(--light-text-color);
-}
-
-@media screen and (min-width: 640px){
-    .tickets-container{
-        height: 100vh;
-    }
 }
 
 @media screen and (max-width: 640px){

@@ -17,8 +17,11 @@ export default function Home() {
     const [alexandre, setAlexandre] = useState('');
     const [alexandrePending, setAlexandrePending] = useState('');
 
-    const [drianne, setDrianne] = useState('');
-    const [driannePending, setDriannePending] = useState('');
+    const [fefs, setFefs] = useState('');
+    const [fefsPending, setFefsPending] = useState('');
+
+    const [aline, setAline] = useState('');
+    const [alinePending, setAlinePending] = useState('');
 
     const [uber, setUber] = useState('');
     const [uberPending, setUberPending] = useState('');
@@ -63,12 +66,21 @@ export default function Home() {
 
         }
 
-        async function searchDrianneTickets(){
-            const response = await api.get(`/tickets/?filter=tags:drianne solved:${data}`);
-            setDrianne(response.data);
+        async function searchFefsTickets(){
+            const response = await api.get(`/tickets/?filter=tags:fernanda solved:${data}`);
+            setFefs(response.data);
 
-            const response2 = await api.get(`/tickets/?filter=tags:drianne status:pending`);
-            setDriannePending(response2.data);
+            const response2 = await api.get(`/tickets/?filter=tags:fernanda status:pending`);
+            setFefsPending(response2.data);
+
+        }
+
+        async function searchAlineTickets(){
+            const response = await api.get(`/tickets/?filter=tags:aline solved:${data}`);
+            setAline(response.data);
+
+            const response2 = await api.get(`/tickets/?filter=tags:aline status:pending`);
+            setAlinePending(response2.data);
 
         }
 
@@ -87,20 +99,22 @@ export default function Home() {
         searchLumaTickets();
         searchAureaneTickets();
         searchAlexandreTickets();
-        searchDrianneTickets();
+        searchFefsTickets();
         searchUberTickets();
         searchGioTickets();
+        searchAlineTickets();
 
     },[data])
 
     return (
         <div className="tickets-container">
-        <Navbar />
-            <header className="tickets-header">
-                
-                <h1>Tickets do dia</h1>
-                <h2>{today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()}</h2>
-            </header>
+            <div className="header-container">
+                <Navbar />
+                <header className="tickets-header">
+                    <h1>Tickets do dia</h1>
+                    <h2>{today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()}</h2>
+                </header>
+            </div>
             {loading && <AgentsSkeleton />}
             {!loading && (
                 <div className="agents-container">
@@ -120,8 +134,8 @@ export default function Home() {
                         agent="Aureane" solved={aureane} pending={aureanePending} />     
                     
                     <AgentCard 
-                        agent_picture="https://trello-attachments.s3.amazonaws.com/6036b82d00e3de2b27796ff7/960x1280/3d94b336907be4f26cf5e2dd1ef60791/foto_atualizada.jpeg.jpg" 
-                        agent="Drianne" solved={drianne} pending={driannePending} 
+                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-UP5CU0H2A-e6f18a163b72-512" 
+                        agent="Fefs" solved={fefs} pending={fefsPending} 
                     /> 
 
                     <AgentCard 
@@ -129,13 +143,18 @@ export default function Home() {
                         agent="Giovanna" solved={gio} pending={gioPending} 
                     /> 
 
+                    <AgentCard 
+                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-U02HRQE5873-ef7f019b19f4-512" 
+                        agent="Aline" solved={aline} pending={alinePending} 
+                    /> 
+
                 </div>
             )}
 
             <div className="total">
                     <h3>Total N2</h3>
-                    <p>{luma+uber+aureane+alexandre+drianne+gio} resolvidos </p>
-                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+driannePending+gioPending} pendentes</p> 
+                    <p>{luma+uber+aureane+alexandre+fefs+gio+aline} resolvidos </p>
+                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
             </div>
 
         </div>
