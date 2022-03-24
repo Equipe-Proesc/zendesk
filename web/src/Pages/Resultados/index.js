@@ -72,7 +72,7 @@ export default function Results() {
                     chat: true
                 },
                 {
-                    name:'davi',
+                    name:'david',
                     image:'https://ca.slack-edge.com/T56FFG3EW-U02UWDBPURM-5b437a4f9673-512',
                     chat: true
                 },
