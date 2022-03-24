@@ -37,16 +37,8 @@ export default function Results() {
     const [agentes] = useState(
             [
                 {
-                    name:'lucas',
-                    image:'https://trello-attachments.s3.amazonaws.com/60353fe07ac21479926b9f40/511x512/70456850a92e4d8718e6f7613e066e66/Screenshot_3.png'
-                },
-                {
                     name:'luma',
                     image:'https://trello-attachments.s3.amazonaws.com/6036bbbae08c87245655c33e/247x256/4295998a229b8199a8e63e3d50d23cba/image.png'
-                },
-                {
-                    name:'douglas',
-                    image:'https://trello-attachments.s3.amazonaws.com/6035712992fb3687357181b6/792x793/503a808e6af8a30822fee82ecca57fdb/img_-_Douglas_Esp%C3%ADndola.png'
                 },
                 {
                     name:'aureane',
@@ -60,7 +52,6 @@ export default function Results() {
                 {
                     name:'alexandre',
                     image:'https://trello-attachments.s3.amazonaws.com/604bccc4d51c2b27a69d9cd4/195x197/1af6bb25c8f05b934a163386daabac39/Screenshot_65.png',
-                    chat: true
                 },
                 {
                     name:'gabriel',
@@ -68,29 +59,31 @@ export default function Results() {
                     chat: true
                 },
                 {
-                    name:'drianne',
-                    image:'https://trello-attachments.s3.amazonaws.com/6036b82d00e3de2b27796ff7/960x1280/3d94b336907be4f26cf5e2dd1ef60791/foto_atualizada.jpeg.jpg',
-                    chat: true
-                },
-                {
                     name:'fernanda',
                     image:'https://trello-attachments.s3.amazonaws.com/6035439118587528d04f1cf3/538x678/b8b4f30540823c59704b5976cd3ede74/image.png',
-                    chat: true
                 },
                 {
                     name:'giovanna',
                     image:'https://trello-attachments.s3.amazonaws.com/60353fe15584ee18e0dd08d1/1153x2048/526869e1b4204291de6fe2d3fa9e6c54/EqgilqwXAAMboqL_-_Giovanna_Lourinho.png',
+                },
+                {
+                    name:'jean',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U02V4BU66TG-1f6332fc8970-512',
                     chat: true
                 },
                 {
-                    name:'duarte',
-                    image:'https://ca.slack-edge.com/T029TQP6WQ7-U02AY6116QG-30a8df6ae2c3-512',
+                    name:'davi',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U02UWDBPURM-5b437a4f9673-512',
+                    chat: true
+                },
+                {
+                    name:'adriely',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U02VB2Z7ENP-43b8b6dc133d-512',
                     chat: true
                 },
                 {
                     name:'aline',
                     image:'https://ca.slack-edge.com/T02AY5X4DFS-U02A8N19NFM-b3aca9920403-512',
-                    chat: true
                 },
             ]
         );
