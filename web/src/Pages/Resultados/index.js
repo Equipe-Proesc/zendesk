@@ -44,11 +44,11 @@ export default function Results() {
                     name:'aureane',
                     image:'https://ca.slack-edge.com/T56FFG3EW-U01U6B19UFN-2a39f84e3a7d-512'
                 },
-                {
-                    name:'uber',
-                    image:'https://trello-attachments.s3.amazonaws.com/603481895db937125c03e74e/6035669cd828620144745941/af370852f7956cc1da2c024e1e55ffd3/image.png',
-                    chat: false
-                },
+                // {
+                //     name:'uber',
+                //     image:'https://trello-attachments.s3.amazonaws.com/603481895db937125c03e74e/6035669cd828620144745941/af370852f7956cc1da2c024e1e55ffd3/image.png',
+                //     chat: false
+                // },
                 {
                     name:'alexandre',
                     image:'https://trello-attachments.s3.amazonaws.com/604bccc4d51c2b27a69d9cd4/195x197/1af6bb25c8f05b934a163386daabac39/Screenshot_65.png',
@@ -127,19 +127,19 @@ export default function Results() {
                             ...infoAgent,
                             problem:response4.data?response4.data:0
                         }
-                        if(agente.chat === true){
-                            const responseChat = await api.get(`/chats/?filter=agent_names:${agente.name} AND timestamp:[${inicialDate} TO ${finalDate}]`);
-                            infoAgent = {
-                                ...infoAgent,
-                                chats:responseChat.data? responseChat.data:0
-                            }
+                        // if(agente.chat === true){
+                        //     const responseChat = await api.get(`/chats/?filter=agent_names:${agente.name} AND timestamp:[${inicialDate} TO ${finalDate}]`);
+                        //     infoAgent = {
+                        //         ...infoAgent,
+                        //         chats:responseChat.data? responseChat.data:0
+                        //     }
 
-                            const responseChatRating = await api.get(`/chats/?filter=agent_names:${agente.name} AND timestamp:[${inicialDate} TO ${finalDate}] AND rating:bad`);
-                            infoAgent = {
-                                ...infoAgent,
-                                chatRating:responseChatRating.data? responseChatRating.data:0
-                            }
-                        }else{
+                        //     const responseChatRating = await api.get(`/chats/?filter=agent_names:${agente.name} AND timestamp:[${inicialDate} TO ${finalDate}] AND rating:bad`);
+                        //     infoAgent = {
+                        //         ...infoAgent,
+                        //         chatRating:responseChatRating.data? responseChatRating.data:0
+                        //     }
+                        // }else{
                             infoAgent = {
                                 ...infoAgent,
                                 chats:0
@@ -148,7 +148,7 @@ export default function Results() {
                                 ...infoAgent,
                                 chatRating:0
                             }
-                        }
+                        // }
                         AgentsInfoTemp = [
                             ...AgentsInfoTemp,
                             infoAgent
