@@ -22,10 +22,7 @@ export default function Home() {
 
     const [aline, setAline] = useState('');
     const [alinePending, setAlinePending] = useState('');
-
-    const [uber, setUber] = useState('');
-    const [uberPending, setUberPending] = useState('');
-
+    
     const [aureane, setAureane] = useState('');
     const [aureanePending, setAureanePending] = useState('');
 
@@ -39,14 +36,6 @@ export default function Home() {
 
             const response2 = await api.get(`/tickets/?filter=tags:luma status:pending`);
             setLumaPending(response2.data);
-        }
-
-        async function searchUberTickets(){
-            const response = await api.get(`/tickets/?filter=tags:uber solved:${data}`);
-            setUber(response.data);
-
-            const response2 = await api.get(`/tickets/?filter=tags:uber status:pending`);
-            setUberPending(response2.data);
         }
 
         async function searchAureaneTickets(){
@@ -100,7 +89,6 @@ export default function Home() {
         searchAureaneTickets();
         searchAlexandreTickets();
         searchFefsTickets();
-        searchUberTickets();
         searchGioTickets();
         searchAlineTickets();
 
@@ -126,10 +114,6 @@ export default function Home() {
                         agent="Alexandre" solved={alexandre} pending={alexandrePending} />
                     
                     <AgentCard 
-                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-UBYHQKYEB-12ea2d4f02bd-512" 
-                        agent="Uber" solved={uber} pending={uberPending} />
-                    
-                    <AgentCard 
                         agent_picture="https://ca.slack-edge.com/T56FFG3EW-U01U6B19UFN-2a39f84e3a7d-512" 
                         agent="Aureane" solved={aureane} pending={aureanePending} />     
                     
@@ -153,8 +137,8 @@ export default function Home() {
 
             <div className="total">
                     <h3>Total N2</h3>
-                    <p>{luma+uber+aureane+alexandre+fefs+gio+aline} resolvidos </p>
-                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
+                    <p>{luma+aureane+alexandre+fefs+gio+aline} resolvidos </p>
+                    <p>{lumaPending+aureanePending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
             </div>
 
         </div>
