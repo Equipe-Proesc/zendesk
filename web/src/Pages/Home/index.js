@@ -23,11 +23,14 @@ export default function Home() {
     const [aline, setAline] = useState('');
     const [alinePending, setAlinePending] = useState('');
 
-    const [uber, setUber] = useState('');
-    const [uberPending, setUberPending] = useState('');
+    const [pedro, setPedro] = useState('');
+    const [pedroPending, setPedroPending] = useState('');
 
-    const [aureane, setAureane] = useState('');
-    const [aureanePending, setAureanePending] = useState('');
+    const [victor, setVictor] = useState('');
+    const [victorPending, setVictorPending] = useState('');
+
+    const [eduardo, setEduardo] = useState('');
+    const [eduardoPending, setEduardoPending] = useState('');
 
     const [gio, setGio] = useState('');
     const [gioPending, setGioPending] = useState('');
@@ -41,20 +44,28 @@ export default function Home() {
             setLumaPending(response2.data);
         }
 
-        async function searchUberTickets(){
-            const response = await api.get(`/tickets/?filter=tags:uber solved:${data}`);
-            setUber(response.data);
+        async function searchPedroTickets(){
+            const response = await api.get(`/tickets/?filter=tags:pedro solved:${data}`);
+            setPedro(response.data);
 
-            const response2 = await api.get(`/tickets/?filter=tags:uber status:pending`);
-            setUberPending(response2.data);
+            const response2 = await api.get(`/tickets/?filter=tags:pedro status:pending`);
+            setPedroPending(response2.data);
         }
 
-        async function searchAureaneTickets(){
-            const response = await api.get(`/tickets/?filter=tags:aureane solved:${data}`);
-            setAureane(response.data);
+        async function searchVictorTickets(){
+            const response = await api.get(`/tickets/?filter=tags:victor solved:${data}`);
+            setVictor(response.data);
 
-            const response2 = await api.get(`/tickets/?filter=tags:aureane status:pending`);
-            setAureanePending(response2.data);
+            const response2 = await api.get(`/tickets/?filter=tags:victor status:pending`);
+            setVictorPending(response2.data);
+        }
+
+        async function searchEduardoTickets(){
+            const response = await api.get(`/tickets/?filter=tags:eduardo solved:${data}`);
+            setEduardo(response.data);
+
+            const response2 = await api.get(`/tickets/?filter=tags:eduardo status:pending`);
+            setEduardoPending(response2.data);
         }
 
         async function searchAlexandreTickets(){
@@ -97,10 +108,11 @@ export default function Home() {
         }
 
         searchLumaTickets();
-        searchAureaneTickets();
+        searchVictorTickets();
+        searchEduardoTickets();
+        searchPedroTickets();
         searchAlexandreTickets();
         searchFefsTickets();
-        searchUberTickets();
         searchGioTickets();
         searchAlineTickets();
 
@@ -126,12 +138,16 @@ export default function Home() {
                         agent="Alexandre" solved={alexandre} pending={alexandrePending} />
                     
                     <AgentCard 
-                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-UBYHQKYEB-12ea2d4f02bd-512" 
-                        agent="Uber" solved={uber} pending={uberPending} />
+                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-U03PZ4RV31A-c42ad82afbf6-512" 
+                        agent="Pedro" solved={pedro} pending={pedroPending} />
                     
                     <AgentCard 
-                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-U01U6B19UFN-2a39f84e3a7d-512" 
-                        agent="Aureane" solved={aureane} pending={aureanePending} />     
+                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-U03S6CHDTS5-2bfb202a77f4-512" 
+                        agent="Victor" solved={victor} pending={victorPending} />
+
+                    <AgentCard 
+                        agent_picture="https://ca.slack-edge.com/T56FFG3EW-U03S6CHKCL9-bb5f66adc888-512" 
+                        agent="Eduardo" solved={eduardo} pending={eduardoPending} />     
                     
                     <AgentCard 
                         agent_picture="https://ca.slack-edge.com/T56FFG3EW-UP5CU0H2A-e6f18a163b72-512" 
@@ -153,8 +169,8 @@ export default function Home() {
 
             <div className="total">
                     <h3>Total N2</h3>
-                    <p>{luma+uber+aureane+alexandre+fefs+gio+aline} resolvidos </p>
-                    <p>{lumaPending+uberPending+aureanePending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
+                    <p>{luma+pedro+victor+eduardo+alexandre+fefs+gio+aline} resolvidos </p>
+                    <p>{lumaPending+pedroPending+victorPending+eduardoPending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
             </div>
 
         </div>
