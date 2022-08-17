@@ -41,14 +41,17 @@ export default function Results() {
                     image:'https://trello-attachments.s3.amazonaws.com/6036bbbae08c87245655c33e/247x256/4295998a229b8199a8e63e3d50d23cba/image.png'
                 },
                 {
-                    name:'aureane',
-                    image:'https://ca.slack-edge.com/T56FFG3EW-U01U6B19UFN-2a39f84e3a7d-512'
+                    name:'pedro',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U03PZ4RV31A-c42ad82afbf6-512'
                 },
-                // {
-                //     name:'uber',
-                //     image:'https://trello-attachments.s3.amazonaws.com/603481895db937125c03e74e/6035669cd828620144745941/af370852f7956cc1da2c024e1e55ffd3/image.png',
-                //     chat: false
-                // },
+                {
+                    name:'victor',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U03S6CHDTS5-2bfb202a77f4-512'
+                },
+                {
+                    name:'eduardo',
+                    image:'https://ca.slack-edge.com/T56FFG3EW-U03S6CHKCL9-bb5f66adc888-512'
+                },
                 {
                     name:'alexandre',
                     image:'https://trello-attachments.s3.amazonaws.com/604bccc4d51c2b27a69d9cd4/195x197/1af6bb25c8f05b934a163386daabac39/Screenshot_65.png',
