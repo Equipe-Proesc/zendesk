@@ -3,7 +3,6 @@ import api from '../../services/api';
 import './style.css';
 import AgentCard from '../../Components/AgentCard'
 import AgentsSkeleton from '../../Components/AgentsSkeleton'
-import { Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 
 export default function Home() {        
