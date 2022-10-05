@@ -37,10 +37,6 @@ export default function Results() {
     const [agentes] = useState(
             [
                 {
-                    name:'luma',
-                    image:'https://trello-attachments.s3.amazonaws.com/6036bbbae08c87245655c33e/247x256/4295998a229b8199a8e63e3d50d23cba/image.png'
-                },
-                {
                     name:'pedro',
                     image:'https://ca.slack-edge.com/T56FFG3EW-U03PZ4RV31A-c42ad82afbf6-512'
                 },
