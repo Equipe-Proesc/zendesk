@@ -10,9 +10,6 @@ export default function Home() {
     data = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     const [loading, setLoading] = useState(true);
 
-    const [luma, setLuma] = useState('');
-    const [lumaPending, setLumaPending] = useState('');
-
     const [alexandre, setAlexandre] = useState('');
     const [alexandrePending, setAlexandrePending] = useState('');
 
@@ -35,13 +32,6 @@ export default function Home() {
     const [gioPending, setGioPending] = useState('');
 
     useEffect(() => {
-        async function searchLumaTickets(){
-            const response = await api.get(`/tickets/?filter=tags:luma solved:${data}`);
-            setLuma(response.data);
-
-            const response2 = await api.get(`/tickets/?filter=tags:luma status:pending`);
-            setLumaPending(response2.data);
-        }
 
         async function searchPedroTickets(){
             const response = await api.get(`/tickets/?filter=tags:pedro solved:${data}`);
@@ -106,7 +96,6 @@ export default function Home() {
 
         }
 
-        searchLumaTickets();
         searchVictorTickets();
         searchEduardoTickets();
         searchPedroTickets();
@@ -129,9 +118,6 @@ export default function Home() {
             {loading && <AgentsSkeleton />}
             {!loading && (
                 <div className="agents-container">
-                    <AgentCard 
-                        agent_picture="https://trello-attachments.s3.amazonaws.com/6036bbbae08c87245655c33e/247x256/4295998a229b8199a8e63e3d50d23cba/image.png" 
-                        agent="Luma" solved={luma} pending={lumaPending} />
                     <AgentCard 
                         agent_picture="https://trello-attachments.s3.amazonaws.com/604bccc4d51c2b27a69d9cd4/195x197/1af6bb25c8f05b934a163386daabac39/Screenshot_65.png" 
                         agent="Alexandre" solved={alexandre} pending={alexandrePending} />
@@ -168,8 +154,8 @@ export default function Home() {
 
             <div className="total">
                     <h3>Total N2</h3>
-                    <p>{luma+pedro+victor+eduardo+alexandre+fefs+gio+aline} resolvidos </p>
-                    <p>{lumaPending+pedroPending+victorPending+eduardoPending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
+                    <p>{pedro+victor+eduardo+alexandre+fefs+gio+aline} resolvidos </p>
+                    <p>{pedroPending+victorPending+eduardoPending+alexandrePending+fefsPending+gioPending+ alinePending} pendentes</p> 
             </div>
 
         </div>
